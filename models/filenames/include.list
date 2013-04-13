@@ -1,0 +1,5 @@
+root #Our regexes supports inline comments
+kit
+c(99|100)
+r57
+gifimg

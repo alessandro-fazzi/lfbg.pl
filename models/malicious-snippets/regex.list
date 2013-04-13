@@ -1,0 +1,25 @@
+edoced_46esab
+passthru\s*\(
+shell_exec\s*\(
+document\.write\s*\(unescape\s*\(
+(eval\s*\(.{0,40})?base64_decode\s*\(
+\bsystem\s*\(
+`[^`]+`/'
+phpinfo\s*\(
+RewriteRule\s
+AddHandler\s
+<script[^>]+src=[\x22\x27]?http://(?!(www\.(google-analytics|gmodules)\.com|pagead2\.googlesyndication\.com/pagead/|(ws\.|((www|cls)\.assoc-))amazon\.com/))[^>]*>
+<iframe[^>]+src=[\x22\x27]?http://(?!(rcm\.amazon\.com/))[^>]*>
+hacked by\s
+web[\s-]*shell
+\bc(99|100)[^0-9]
+\$shver
+kira
+r57
+gumblar\.cn
+martuz\.cn
+beladen\.net
+gooqle
+127\.0\.0\.1
+_analist
+anaiytics
