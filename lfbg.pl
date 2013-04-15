@@ -3,6 +3,7 @@ use FindBin qw($Bin);
 use lib::Lfbg;
 use Data::Dumper;
 
+
 our $list;
 our $v;
 our $verbose;
@@ -40,5 +41,7 @@ for (@ARGV){
 
 for my $model (@accepted_args){
   print "Processing $model";
-  Lfbg::process($model, $verbose);
+  my @output = Lfbg::process($model, $verbose);
+  @output and Lfbg::mailout(@output) or die "No output to mailout";
 }
+
