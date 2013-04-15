@@ -1,6 +1,6 @@
 #!/usr/bin/perl -wl -s
 use FindBin qw($Bin);
-use lib::Helpers;
+use lib::Lfbg;
 use Data::Dumper;
 
 our $list;
@@ -40,5 +40,5 @@ for (@ARGV){
 
 for my $model (@accepted_args){
   print "Processing $model";
-  Helpers::process($model, $verbose);
+  Lfbg::process($model, $verbose);
 }
