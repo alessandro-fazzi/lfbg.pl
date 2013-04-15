@@ -2,6 +2,9 @@ package Lfbg;
 use FindBin qw($Bin);
 use File::Find;
 use Data::Dumper;
+use Net::SMTP;
+use HTML::Entities;
+use HTML::Strip;
 our $abs_path = $Bin;
 do "$abs_path/lfbg.conf"; #include user configurations
 
