@@ -80,4 +80,41 @@ sub collect{
 
 }
 
+sub mailout{
+
+  $to = 'alessandro.fazzi@welaika.com';
+  $from = 'wpsecurity@welaika.com';
+  $subj = 'WP passive security report';
+  $user = 'www@welaika.com';
+  $password = "U+o?V'xX";
+  
+  $text = <<EOT
+  <html>  <head><title>WP passive sec report</title>
+  <style type="text/css">.section{padding:5px;font-size:small;background:#ccc;}.grey{background:#eee;padding:5px;}
+  </style></head>@_</html>
+EOT
+;
+
+  $smtp = Net::SMTP->new( "mail.welaika.com",
+                    Hello => 'test.welaika.com',
+                    Timeout => 60,
+                    Auth => [ $user, $password ],
+                    Debug => 0
+                    );
+
+  $smtp->mail($from);
+  $smtp->recipient($to);
+  $smtp->data;
+  $smtp->datasend("MIME-Version: 1.0\nContent-Type: text/html; charset=UTF-8 \n");
+  $smtp->datasend("From: $from\n");
+  $smtp->datasend("To: $to\n");
+  #$smtp->datasend("Cc: matteo.giaccone\@welaika.com\n");
+  $smtp->datasend("Subject: $subj\n");
+  $smtp->datasend("\n");
+  $smtp->datasend("$text");
+  $smtp->dataend;
+  $smtp->quit;
+
+}
+
 1
