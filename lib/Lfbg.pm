@@ -73,4 +73,11 @@ sub mysort{
   sort @_;
 }
 
+sub collect{
+  $input = $_[0];
+  $verbose and print $input;
+  push @output, "<div class=\"section\">$input</div><br />";
+
+}
+
 1
