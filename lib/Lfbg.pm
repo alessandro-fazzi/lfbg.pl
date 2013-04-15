@@ -44,8 +44,8 @@ sub search_and_scan{
 
 sub match{
   -f and /$includelist/ and
-      $input = "$File::Find::dir/<strong>$_</strong> matched $&" and
-      collect($input);
+      $output = "$File::Find::dir/<strong>$_</strong>\t matched $&" and
+      collect($output);
 }
 
 sub match_content{
@@ -65,20 +65,20 @@ sub match_content{
     $line =~ /$regexlist/ or next;
     
     my $hs = HTML::Strip->new();
-    my $clean_text = $hs->parse( $line );
+    my $clean_line = $hs->parse( $line );
     $hs->eof;
     my $clean_match = $hs->parse( $& );
     $hs->eof;
 
     push @local_output, "\t<span class=\"singlematch\"><blockquote>On line $linenu ->" . $clean_match . "</span><br />\n\t\t
-    <blockquote><pre>".$clean_text."</pre></blockquote></blockquote>";
+    <blockquote><pre>".$clean_line."</pre></blockquote></blockquote>";
     
     
   }
   
-  $input = "Searching in file <strong>$File::Find::name</strong>... ".@local_output." matches:\n<br />
+  $output = "Searching in file <strong>$File::Find::name</strong>... ".@local_output." matches:\n<br />
   <div class=\"grey\">@local_output</div>" and
-  collect($input) unless @local_output eq 0;
+  collect($output) unless @local_output eq 0;
 
 }
 
@@ -87,8 +87,13 @@ sub mysort{
 }
 
 sub collect{
-  $input = $_[0];
-  $verbose and print $input;
+  my $input = $_[0];
+  if ($verbose){
+    my $hs = HTML::Strip->new();
+    my $clean_input = $hs->parse( $input );
+    $clean_input =~ s/\s+//;
+    print $clean_input;
+  }
   push @output, "<div class=\"section\">$input</div><br />";
 
 }
