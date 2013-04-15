@@ -62,8 +62,20 @@ sub match_content{
   my $linenu = 0;
   for my $line (@lines){
     ++$linenu;
+    
     $line =~ s/^\s+//;
-    $line =~ /$regexlist/ and push @output, "\t".`tput bold`."On line $linenu -> $&".`tput sgr0`."\n\t\t$line";
+    $line =~ /$regexlist/ or next;
+    
+    my $hs = HTML::Strip->new();
+    my $clean_text = $hs->parse( $line );
+    $hs->eof;
+    my $clean_match = $hs->parse( $& );
+    $hs->eof;
+
+    push @local_output, "\t<span class=\"singlematch\"><blockquote>On line $linenu ->" . $clean_match . "</span><br />\n\t\t
+    <blockquote><pre>".$clean_text."</pre></blockquote></blockquote>";
+    
+    
   }
   
   if (@output != 0) {
