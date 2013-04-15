@@ -19,12 +19,16 @@ sub get_list {
 
 sub process {
   my ($model, $verbose) = @_;
+  local @output = ();
   {
-  if ($model eq 'filenames') { Lfbg::search($model, $verbose); last; }
-  if ($model eq 'malicious-snippets') { Lfbg::search_and_scan($model, $verbose); last }
-  if ($model eq 'wp-pharma-hack') { Lfbg::search_and_scan($model, $verbose); last }
-  $finished = 1;
+  if ($model eq 'filenames') { Lfbg::search($model, $verbose); }
+  elsif ($model eq 'malicious-snippets') { Lfbg::search_and_scan($model, $verbose); }
+  elsif ($model eq 'wp-pharma-hack') { Lfbg::search_and_scan($model, $verbose); }
+
+  print @output." matches found for --> $model <-- search model.";
   }
+
+  return @output;
 }
 
 sub search {
