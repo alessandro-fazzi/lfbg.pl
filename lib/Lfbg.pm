@@ -47,8 +47,8 @@ sub match{
 }
 
 sub match_content{
-  $includelist = Lfbg::get_list("$abs_path/models/$model/include.list");
-  $regexlist = Lfbg::get_list("$abs_path/models/$model/regex.list");
+  $includelist = get_list("$abs_path/models/$model/include.list");
+  $regexlist = get_list("$abs_path/models/$model/regex.list");
   
   -f and /$includelist/ or return;
   open (FH, $_);
