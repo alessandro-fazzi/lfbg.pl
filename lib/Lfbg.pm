@@ -43,11 +43,9 @@ sub search_and_scan{
 }
 
 sub match{
-  $includelist = Lfbg::get_list("$abs_path/models/$model/include.list");
-
   -f and /$includelist/ and
-    print "$File::Find::dir/" . `tput rev` . "$_" . `tput rmso` . " matched $&" if $verbose;
-
+      $input = "$File::Find::dir/<strong>$_</strong> matched $&" and
+      collect($input);
 }
 
 sub match_content{
@@ -57,8 +55,8 @@ sub match_content{
   -f and /$includelist/ or return;
   open (FH, $_);
   my @lines = <FH>;
+  my @local_output = ();
 
-  my @output = ();
   my $linenu = 0;
   for my $line (@lines){
     ++$linenu;
@@ -78,10 +76,9 @@ sub match_content{
     
   }
   
-  if (@output != 0) {
-    $verbose and print "Searching in file ".`tput rev`."$File::Find::name".`tput rmso`."... ".@output." matches:\n@output"
-            or print @output." matches in $File::Find::name";
-  }
+  $input = "Searching in file <strong>$File::Find::name</strong>... ".@local_output." matches:\n<br />
+  <div class=\"grey\">@local_output</div>" and
+  collect($input) unless @local_output eq 0;
 
 }
 
