@@ -7,6 +7,7 @@ use Data::Dumper;
 our $list;
 our $v;
 our $verbose;
+our $mail;
 
 @models = <$Bin/models/*>;
 for (@models) {
@@ -42,6 +43,6 @@ for (@ARGV){
 for my $model (@accepted_args){
   print "Processing $model";
   my @output = Lfbg::process($model, $verbose);
-  @output and Lfbg::mailout(@output) or die "No output to mailout";
+  @output and Lfbg::mailout(@output) or warn "No output to mailout" if $mail;
 }
 
