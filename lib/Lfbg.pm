@@ -29,13 +29,13 @@ sub process {
 
 sub search {
   local ($model, $verbose) = @_;
-  $includelist = Lfbg::get_list("$abs_path/models/$model/include.list");
-  find({ wanted => \&match, preprocess => \&sort }, $scanpath);
+  local $includelist = Lfbg::get_list("$abs_path/models/$model/include.list");
+  find({ wanted => \&match, preprocess => \&mysort }, $scanpath);
 }
 
 sub search_and_scan{
   local ($model, $verbose) = @_;
-  find({ wanted => \&match_content, preprocess => \&sort }, $scanpath);
+  find({ wanted => \&match_content, preprocess => \&mysort }, $scanpath);
 }
 
 sub match{
@@ -69,8 +69,7 @@ sub match_content{
 
 }
 
-
-sub sort{
+sub mysort{
   sort @_;
 }
 
