@@ -2,6 +2,7 @@ package Lfbg;
 use FindBin qw($Bin);
 use File::Find;
 use Data::Dumper;
+use POSIX ;
 use Net::SMTP;
 use HTML::Entities;
 use HTML::Strip;
@@ -119,6 +120,7 @@ EOT
   $smtp->recipient($to);
   $smtp->data;
   $smtp->datasend("MIME-Version: 1.0\nContent-Type: text/html; charset=UTF-8 \n");
+  $smtp->datasend("Date: " . strftime("%a, %d %b %Y %H:%M:%S %z", localtime) . "\n");
   $smtp->datasend("From: $from\n");
   $smtp->datasend("To: $to\n");
   $smtp->datasend("Cc: \n");
