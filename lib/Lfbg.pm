@@ -112,7 +112,7 @@ EOT
                     Hello => $helo,
                     Timeout => 60,
                     Auth => [ $user, $password ],
-                    Debug => 1
+                    Debug => 0
                     );
 
   $smtp->mail($from);
