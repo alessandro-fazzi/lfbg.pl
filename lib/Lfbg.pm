@@ -99,25 +99,20 @@ sub collect{
 }
 
 sub mailout{
+  my $model = shift;
 
-  $to = 'alessandro.fazzi@welaika.com';
-  $from = 'wpsecurity@welaika.com';
-  $subj = 'WP passive security report';
-  $user = 'www@welaika.com';
-  $password = "U+o?V'xX";
-  
   $text = <<EOT
-  <html>  <head><title>WP passive sec report</title>
+  <html>  <head><title>WP passive sec report - $model</title>
   <style type="text/css">.section{padding:5px;font-size:small;background:#ccc;}.grey{background:#eee;padding:5px;}
-  </style></head>@_</html>
+  </style></head><h2>Report for scan model $model</h2>@_</html>
 EOT
 ;
 
-  $smtp = Net::SMTP->new( "mail.welaika.com",
-                    Hello => 'test.welaika.com',
+  $smtp = Net::SMTP->new( $smtp_server,
+                    Hello => $helo,
                     Timeout => 60,
                     Auth => [ $user, $password ],
-                    Debug => 0
+                    Debug => 1
                     );
 
   $smtp->mail($from);
@@ -126,7 +121,7 @@ EOT
   $smtp->datasend("MIME-Version: 1.0\nContent-Type: text/html; charset=UTF-8 \n");
   $smtp->datasend("From: $from\n");
   $smtp->datasend("To: $to\n");
-  #$smtp->datasend("Cc: matteo.giaccone\@welaika.com\n");
+  $smtp->datasend("Cc: \n");
   $smtp->datasend("Subject: $subj\n");
   $smtp->datasend("\n");
   $smtp->datasend("$text");
