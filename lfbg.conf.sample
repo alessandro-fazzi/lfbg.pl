@@ -1,0 +1,9 @@
+$scanpath='';
+
+$to = '';
+$from = '';
+$subj = '';
+$user = '';
+$password = "";
+$smtp_server = '';
+$helo = '';
