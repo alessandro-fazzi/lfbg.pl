@@ -101,6 +101,7 @@ sub collect{
 
 sub mailout{
   my $model = shift;
+  my $now = localtime;
 
   $text = <<EOT
   <html>  <head><title>WP passive sec report - $model</title>
@@ -120,7 +121,7 @@ EOT
   $smtp->recipient($to);
   $smtp->data;
   $smtp->datasend("MIME-Version: 1.0\nContent-Type: text/html; charset=UTF-8 \n");
-  $smtp->datasend("Date: " . strftime("%a, %d %b %Y %H:%M:%S %z", localtime) . "\n");
+  $smtp->datasend("Date:$now\n");
   $smtp->datasend("From: $from\n");
   $smtp->datasend("To: $to\n");
   $smtp->datasend("Cc: \n");
