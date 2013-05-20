@@ -7,3 +7,4 @@ $user = '';
 $password = "";
 $smtp_server = '';
 $helo = '';
+$smtp_debug = 0;

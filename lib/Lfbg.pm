@@ -113,7 +113,7 @@ EOT
   $smtp = Net::SMTP_auth->new( $smtp_server,
                     Hello => $helo,
                     Timeout => 60,
-                    Debug => 1
+                    Debug => $smtp_debug
                     );
   $smtp->auth( 'PLAIN', $user , $password ) or die "Could not authenticate $!";
   $smtp->mail($from);
