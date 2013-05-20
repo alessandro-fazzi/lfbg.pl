@@ -7,7 +7,7 @@ shell_exec\s*\( #generic dangerous functions
 document\.write\s*\(unescape\s*\( #generic dangerous functions
 (eval\s*\(.{0,40})?base64_decode\s*\( #generic dangerous functions
 \bsystem\s*\( #generic dangerous functions
-`[^`]+`/' #generic dangerous functions
+`[^`]+` #generic dangerous functions
 hacked by\s #generic dangerous functions
 web[\s-]*shell #generic dangerous functions
 [a-zA-Z0-9]{50,}={0,2} #too long string
@@ -27,4 +27,4 @@ passwd #don't search for my passwd file
 spygrup
 \bt[1-8] #Ekin0x shell
 \bop(?:[1-9]|1[1-3])\b #Ekin0x shell
-header\('Content-Type: image\/gif'\)
+header\('Content-Type: image/gif'\)
