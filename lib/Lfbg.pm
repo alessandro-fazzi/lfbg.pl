@@ -3,7 +3,7 @@ use FindBin qw($Bin);
 use File::Find;
 use Data::Dumper;
 use POSIX ;
-use Net::SMTP;
+use Net::SMTP_auth;
 use HTML::Entities;
 use HTML::Strip;
 our $abs_path = $Bin;
@@ -110,15 +110,14 @@ sub mailout{
 EOT
 ;
 
-  $smtp = Net::SMTP->new( $smtp_server,
+  $smtp = Net::SMTP_auth->new( $smtp_server,
                     Hello => $helo,
                     Timeout => 60,
-                    Auth => [ $user, $password ],
-                    Debug => 0
+                    Debug => 1
                     );
-
+  $smtp->auth( 'PLAIN', $user , $password ) or die "Could not authenticate $!";
   $smtp->mail($from);
-  $smtp->recipient($to);
+  $smtp->to($to);
   $smtp->data;
   $smtp->datasend("MIME-Version: 1.0\nContent-Type: text/html; charset=UTF-8 \n");
   $smtp->datasend("Date:$now\n");
