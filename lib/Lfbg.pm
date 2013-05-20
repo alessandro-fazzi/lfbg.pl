@@ -123,7 +123,7 @@ EOT
   $smtp->datasend("Date:$now\n");
   $smtp->datasend("From: $from\n");
   $smtp->datasend("To: $to\n");
-  $smtp->datasend("Cc: \n");
+  $smtp->datasend("Cc: $cc\n");
   $smtp->datasend("Subject: $subj\n");
   $smtp->datasend("\n");
   $smtp->datasend("$text");

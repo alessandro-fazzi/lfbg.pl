@@ -1,6 +1,7 @@
 $scanpath='';
 
 $to = '';
+$cc = '';
 $from = '';
 $subj = '';
 $user = '';
