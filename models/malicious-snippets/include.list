@@ -1,9 +1,4 @@
 \.htaccess$
 \.php[45]?$
 \.html?$
-\.aspx?$
 \.inc$
-\.cfm$
-\.js$
-\.txt$
-\.css$

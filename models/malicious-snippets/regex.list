@@ -1,25 +1,30 @@
-edoced_46esab
-passthru\s*\(
-shell_exec\s*\(
-document\.write\s*\(unescape\s*\(
-(eval\s*\(.{0,40})?base64_decode\s*\(
-\bsystem\s*\(
-`[^`]+`/'
-phpinfo\s*\(
-RewriteRule\s
-AddHandler\s
-<script[^>]+src=[\x22\x27]?http://(?!(www\.(google-analytics|gmodules)\.com|pagead2\.googlesyndication\.com/pagead/|(ws\.|((www|cls)\.assoc-))amazon\.com/))[^>]*>
-<iframe[^>]+src=[\x22\x27]?http://(?!(rcm\.amazon\.com/))[^>]*>
-hacked by\s
-web[\s-]*shell
-\bc(99|100)[^0-9]
+AddHandler\s  #in htaccess
+AddType application\/x-httpd-php \.jpeg #in htaccess
+AddType application/x-httpd-perl \.png #in htaccess
+edoced_46esab #generic dangerous functions
+passthru\s*\( #generic dangerous functions
+shell_exec\s*\( #generic dangerous functions
+document\.write\s*\(unescape\s*\( #generic dangerous functions
+(eval\s*\(.{0,40})?base64_decode\s*\( #generic dangerous functions
+\bsystem\s*\( #generic dangerous functions
+`[^`]+`/' #generic dangerous functions
+hacked by\s #generic dangerous functions
+web[\s-]*shell #generic dangerous functions
+[a-zA-Z0-9]{50,}={0,2} #too long string
+\bc(99|100)[^0-9] #shell name
+Safe0ver #webshell name
+r57 #webshell name
 \$shver
 kira
-r57
 gumblar\.cn
 martuz\.cn
 beladen\.net
 gooqle
-127\.0\.0\.1
 _analist
 anaiytics
+\$scriptver\b
+passwd #don't search for my passwd file
+spygrup
+\bt[1-8] #Ekin0x shell
+\bop(?:[1-9]|1[1-3])\b #Ekin0x shell
+header\('Content-Type: image\/gif'\)
