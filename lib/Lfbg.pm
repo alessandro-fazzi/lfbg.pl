@@ -120,6 +120,7 @@ EOT
   $smtp->auth( 'PLAIN', $user , $password ) or die "Could not authenticate $!";
   $smtp->mail($from);
   $smtp->to($to);
+  $smtp->cc($cc);
   $smtp->data;
   $smtp->datasend("MIME-Version: 1.0\nContent-Type: text/html; charset=UTF-8 \n");
   $smtp->datasend("Date:$now\n");
