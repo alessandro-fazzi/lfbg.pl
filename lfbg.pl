@@ -5,6 +5,8 @@ use Data::Dumper;
 
 
 our ($list, $v, $verbose, $mail, $m);
+our $abs_path = $Bin;
+our $mailfile = $abs_path . "/mail.html";
 $verbose = 1 if defined($v);
 $mail = 1 if defined($m);
 
@@ -23,8 +25,6 @@ if ($list) {
 
 @ARGV or print "No given arguments. Aborting" and exit 255;
 
-our $abs_path = $Bin;
-our $mailfile = $abs_path . "/mail.html";
 
 
 for (@ARGV){
