@@ -88,18 +88,23 @@ ToDo... for now:
     -m, -mail       send mail report (if configured in lfbg.conf)
     -list           list available methods
 
-## Status
+## Status and features (sort of changelog)
 
 At the moment we are working (slowly) on the script in this way:
 
-* we run it on our backup server: backups in the night, sec scanning during the
+[x] we run it on our backup server: backups in the night, sec scanning during the
 day on the backed up files
-* we are refactoring the shipped regex collection: too many false positives in
+[ ] we are refactoring the shipped regex collection: too many false positives in
 the original lfbg; and we are specializing the scan (I'll write more about)
-* <s>we are implementing the _exclude_ functions (not a hard work, so it will be
-shipped soon)</s> Implemented! +1
-* we are planning (it is just on my local dev branch ;) ) to implement a sec
+[x] we are implementing the _exclude_ functions (not a hard work, so it will be
+shipped soon)
+[x] multiple scan paths
+[x] scan paths with globbing star (*)
+[x] custom user methods with no ```git pull``` pain in the ass: if you'll add a search
+model you should update the core code easilly
+[ ] we are planning (it is just on my local dev branch ;) ) to implement a sec
 check specifically for wordpress sites based on the md5 hashes of the core's files
+[ ] what's you're request? Leave an issue here on github!
 
 ## Just a piece of security
 
