@@ -6,6 +6,7 @@ use POSIX ;
 use Net::SMTP_auth;
 use HTML::Entities;
 use HTML::Strip;
+
 our $abs_path = $Bin;
 do "$abs_path/lfbg.conf"; #include user configurations
 
@@ -19,8 +20,12 @@ sub get_list {
 }
 
 sub process {
-  my ($model, $verbose) = @_;
+  local ($model, $verbose) = @_;
   local @output = ();
+  local $includelist = get_list("$abs_path/models/$model/include.list");
+  local $regexlist = get_list("$abs_path/models/$model/regex.list");
+  local $excludelist = get_list("$abs_path/models/$model/exclude.list");
+
   {
   if ($model eq 'filenames') { Lfbg::search($model, $verbose); }
   elsif ($model eq 'malicious-snippets') { Lfbg::search_and_scan($model, $verbose); }
@@ -33,13 +38,10 @@ sub process {
 }
 
 sub search {
-  local ($model, $verbose) = @_;
-  local $includelist = Lfbg::get_list("$abs_path/models/$model/include.list");
   find({ wanted => \&match, preprocess => \&mysort }, $scanpath);
 }
 
 sub search_and_scan{
-  local ($model, $verbose) = @_;
   find({ wanted => \&match_content, preprocess => \&mysort }, $scanpath);
 }
 
@@ -52,11 +54,10 @@ sub match{
 }
 
 sub match_content{
-  $includelist = get_list("$abs_path/models/$model/include.list");
-  $regexlist = get_list("$abs_path/models/$model/regex.list");
   
   /$excludelist/ and return;
   -f and /$includelist/ or return;
+
   open (FH, $_);
   my @lines = <FH>;
   my @local_output = ();
@@ -76,8 +77,6 @@ sub match_content{
 
     push @local_output, "\t<span class=\"singlematch\"><blockquote>On line $linenu ->" . $clean_match . "</span><br />\n\t\t
     <blockquote><pre>".$clean_line."</pre></blockquote></blockquote>";
-    
-    
   }
   
   $output = "Searching in file <strong>$File::Find::name</strong>... ".@local_output." matches:\n<br />
