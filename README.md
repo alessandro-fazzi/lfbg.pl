@@ -1,4 +1,4 @@
-# Looking For Bag Guys
+# Looking For Bad Guys
 
 ## The CLI version
 
@@ -80,6 +80,14 @@ Files, folders and what they do...
     │   │   └── regex.list
     └── README.md               # your looking at this now, actually :)
 
+### Usage
+
+ToDo... for now:
+
+    -v, -verbose    print results on STDOUT
+    -m, -mail       send mail report (if configured in lfbg.conf)
+    -list           list available methods
+
 ## Status
 
 At the moment we are working (slowly) on the script in this way:
@@ -107,4 +115,43 @@ IDS or whatsoever similar.
 ## Sharing
 
 We will be happy, one day, if anyone using _lfbg.pl_ will share usefull regexes
-adding them to the shipped collection :) 
+adding them to the shipped collection :)
+I'll write documentation about best contribuition method and best private regex
+collection extension method. At the moment you have to know that you can add a
+model like this...
+
+### Adding a model
+
+Well, if you add a folder inside _models_, named e.g. _my_scan_, this will be a
+new valid search&scan method. For doing this:
+
+    $ cp -r models/template models/my_scan
+
+then test with
+
+    $ ./lfbg.pl -list
+
+and it should be listed. So you can use it
+
+    $ ./lfbg.pl -v my_scan
+
+Configure at your wish compiling ```models/my_scan/*``` with your regular expressions
+
+### Regular expressions properties
+
+We support all the pcre with the following assumptions:
+
+* you have not to escape trailing slash "/"
+* all is considered case-insensitive
+* you must write *one regex per line*
+* you can comment each regex following a " #" at the end:
+
+
+```
+
+    AddHandler\s.+[^\.php]$  #in htaccess
+    AddType application/x-httpd-php \.jpeg #in htaccess
+    AddType application/x-httpd-perl \.png #in htaccess
+    edoced_46esab #generic dangerous functions
+
+```
