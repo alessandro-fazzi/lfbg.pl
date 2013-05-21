@@ -56,6 +56,30 @@ So I'm focusing on reading webshells' code and htaccess attack technics, cathcin
 significant and representative snippets and writing down regular expression
 matching them.
 
+## Dissection
+
+Files, folders and what they do...
+
+    ├── lfbg.conf.sample        # your config sample cp it to lfbg.conf
+    ├── lfbg.pl                 # main script. Invoke it!
+    ├── lib                     # all the PM will go here. Leave it alone
+    │   ├── Lfbg.pm
+    ├── models                  # each subfolder is a search&scan method
+    |   |                         this is where you have to write your own regexes!
+    │   ├── filenames           # this one search for suspicious filenames
+    │   │   ├── exclude.list        # excluding regex collection
+    │   │   ├── include.list        # including regex collection
+    │   │   └── regex.list          # not used here...see below
+    │   ├── malicious-snippets  # this one search inside code for dangerous snippets
+    │   │   ├── exclude.list
+    │   │   ├── include.list
+    │   │   └── regex.list          # code pattern matching regexes
+    │   ├── template
+    │   │   ├── exclude.list
+    │   │   ├── include.list
+    │   │   └── regex.list
+    └── README.md               # your looking at this now, actually :)
+
 ## Status
 
 At the moment we are working (slowly) on the script in this way:
