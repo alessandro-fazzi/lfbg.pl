@@ -10,6 +10,7 @@ use HTML::Strip;
 our $abs_path = $Bin;
 do "$abs_path/lfbg.conf"; #include user configurations
 
+
 sub get_list {
   open FH, $_[0] or die $!;
   @fh = <FH>;
@@ -17,6 +18,16 @@ sub get_list {
   local $"="|";
   my $include = qr/@fh/ix;
   return $include;
+}
+
+sub get_paths {
+
+  $scanpath =~ s/ +/,/;
+  my @pathlist = split(/,/, $scanpath);
+  my @globbedpaths = map { glob($_) } @pathlist;
+  my @scanpath = grep { /^.+$/ and -d } @globbedpaths;
+
+  return @scanpath;
 }
 
 sub process {
@@ -27,10 +38,11 @@ sub process {
   local $excludelist = get_list("$abs_path/models/$model/exclude.list");
 
   {
-  if ($model eq 'filenames') { Lfbg::search($model, $verbose); }
-  elsif ($model eq 'malicious-snippets') { Lfbg::search_and_scan($model, $verbose); }
-  elsif ($model eq 'wp-pharma-hack') { Lfbg::search_and_scan($model, $verbose); }
-  else { Lfbg::search_and_scan($model, $verbose); }
+  my @scanpath = get_paths;
+  if ($model eq 'filenames') { Lfbg::search(@scanpath); }
+  elsif ($model eq 'malicious-snippets') { Lfbg::search_and_scan(@scanpath); }
+  elsif ($model eq 'wp-pharma-hack') { Lfbg::search_and_scan(@scanpath); }
+  else { Lfbg::search_and_scan(@scanpath); }
 
   print @output." matches found for --> $model <-- search model.";
   }
@@ -39,11 +51,14 @@ sub process {
 }
 
 sub search {
-  find({ wanted => \&match, preprocess => \&mysort }, $scanpath);
+  my @scanpath = @_;
+  print Dumper(@scanpath);
+  find({ wanted => \&match, preprocess => \&mysort }, @scanpath);
 }
 
 sub search_and_scan{
-  find({ wanted => \&match_content, preprocess => \&mysort }, $scanpath);
+  my @scanpath = @_;
+  find({ wanted => \&match_content, preprocess => \&mysort }, @scanpath);
 }
 
 sub match{

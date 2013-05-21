@@ -1,3 +1,10 @@
+###################################
+# Where should we search?
+# Multiple paths supported. Keep all them between quotes and separate with either a space or a comma:
+# $scanpath='dir other_dir' is supported as well as
+# $scanpath='dir, other_dir' as well as
+# $scanpath='dir,other_dir'
+###################################
 $scanpath='';
 
 $to = '';
