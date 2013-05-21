@@ -64,8 +64,8 @@ At the moment we are working (slowly) on the script in this way:
 day on the backed up files
 * we are refactoring the shipped regex collection: too many false positives in
 the original lfbg; and we are specializing the scan (I'll write more about)
-* we are implementing the _exclude_ functions (not a hard work, so it will be
-shipped soon)
+* <s>we are implementing the _exclude_ functions (not a hard work, so it will be
+shipped soon)</s> Implemented! +1
 * we are planning (it is just on my local dev branch ;) ) to implement a sec
 check specifically for wordpress sites based on the md5 hashes of the core's files
 
