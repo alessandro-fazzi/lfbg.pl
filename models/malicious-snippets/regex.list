@@ -1,5 +1,5 @@
-AddHandler\s  #in htaccess
-AddType application\/x-httpd-php \.jpeg #in htaccess
+AddHandler\s.+[^\.php]$  #in htaccess
+AddType application/x-httpd-php \.jpeg #in htaccess
 AddType application/x-httpd-perl \.png #in htaccess
 edoced_46esab #generic dangerous functions
 passthru\s*\( #generic dangerous functions
