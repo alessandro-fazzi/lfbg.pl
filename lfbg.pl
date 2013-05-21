@@ -4,7 +4,9 @@ use lib::Lfbg;
 use Data::Dumper;
 
 
-our ($list, $v, $verbose, $mail);
+our ($list, $v, $verbose, $mail, $m);
+$verbose = 1 if defined($v);
+$mail = 1 if defined($m);
 
 @models = <$Bin/models/*>;
 for (@models) {
@@ -18,7 +20,6 @@ if ($list) {
   print "* ".$models_list;
   exit 0;
 }
-$verbose = 1 if defined($v);
 
 @ARGV or print "No given arguments. Aborting" and exit 255;
 
