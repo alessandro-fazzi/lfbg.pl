@@ -4,10 +4,7 @@ use lib::Lfbg;
 use Data::Dumper;
 
 
-our $list;
-our $v;
-our $verbose;
-our $mail;
+our ($list, $v, $verbose, $mail);
 
 @models = <$Bin/models/*>;
 for (@models) {
