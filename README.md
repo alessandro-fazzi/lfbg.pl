@@ -140,7 +140,7 @@ and it should be listed. So you can use it
 
     $ ./lfbg.pl -v my_scan
 
-Configure at your wish compiling ```models/my_scan/*``` with your regular expressions
+Configure at your wish filling ```models/my_scan/*``` with your regular expressions
 
 ### Regular expressions properties
 
