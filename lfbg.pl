@@ -18,7 +18,7 @@ for (@models) {
 
 if ($list) {
   $models_list = join "\n* ", @models;
-  $,="/";
+  local $,="/";
   print "* ".$models_list;
   exit 0;
 }
