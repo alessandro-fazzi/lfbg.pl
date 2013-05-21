@@ -1,1 +1,5 @@
 lfbg.conf
+models/*
+!models/filenames
+!models/malicious-snippets
+!models/template
