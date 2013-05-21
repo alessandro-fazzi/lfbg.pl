@@ -30,6 +30,7 @@ sub process {
   if ($model eq 'filenames') { Lfbg::search($model, $verbose); }
   elsif ($model eq 'malicious-snippets') { Lfbg::search_and_scan($model, $verbose); }
   elsif ($model eq 'wp-pharma-hack') { Lfbg::search_and_scan($model, $verbose); }
+  else { Lfbg::search_and_scan($model, $verbose); }
 
   print @output." matches found for --> $model <-- search model.";
   }
