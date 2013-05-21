@@ -44,6 +44,8 @@ sub search_and_scan{
 }
 
 sub match{
+
+  /$excludelist/ and return;
   -f and /$includelist/ and
       $output = "$File::Find::dir/<strong>$_</strong>\t matched $&" and
       collect($output);
@@ -53,6 +55,7 @@ sub match_content{
   $includelist = get_list("$abs_path/models/$model/include.list");
   $regexlist = get_list("$abs_path/models/$model/regex.list");
   
+  /$excludelist/ and return;
   -f and /$includelist/ or return;
   open (FH, $_);
   my @lines = <FH>;
