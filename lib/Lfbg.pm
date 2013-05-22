@@ -22,10 +22,10 @@ sub get_list {
 
 sub get_paths {
 
-  $scanpath =~ s/ +/,/;
-  my @pathlist = split(/,/, $scanpath);
-  my @globbedpaths = map { glob($_) } @pathlist;
-  my @scanpath = grep { /^.+$/ and -d } @globbedpaths;
+  $scanpath =~ s/ +/,/; #if user separated paths with spaces convert to commas
+  my @pathlist = split(/,/, $scanpath); #get a list of paths
+  my @globbedpaths = map { glob($_) } @pathlist; #if globbing star used, expand it
+  my @scanpath = grep { /^.+$/ and -d } @globbedpaths; #delete non-folders and empty, just to sanitize
 
   return @scanpath;
 }
@@ -52,7 +52,6 @@ sub process {
 
 sub search {
   my @scanpath = @_;
-  print Dumper(@scanpath);
   find({ wanted => \&match, preprocess => \&mysort }, @scanpath);
 }
 
