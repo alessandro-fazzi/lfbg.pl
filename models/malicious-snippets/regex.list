@@ -1,19 +1,19 @@
-AddHandler\s.+[^\.php]$  #in htaccess
-AddType application/x-httpd-php \.jpeg #in htaccess
-AddType application/x-httpd-perl \.png #in htaccess
-edoced_46esab #generic dangerous functions
-passthru\s*\( #generic dangerous functions
-shell_exec\s*\( #generic dangerous functions
-document\.write\s*\(unescape\s*\( #generic dangerous functions
-(eval\s*\(.{0,40})?base64_decode\s*\( #generic dangerous functions
-\bsystem\s*\( #generic dangerous functions
-`[^`]+` #generic dangerous functions
-hacked by\s #generic dangerous functions
-web[\s-]*shell #generic dangerous functions
-[a-zA-Z0-9]{50,}={0,2} #too long string
-\bc(99|100)[^0-9] #shell name
-Safe0ver #webshell name
-r57 #webshell name
+AddHandler.*(?<!\.php)$                   #in htaccess
+AddType application/x-httpd-php \.jpeg    #in htaccess
+AddType application/x-httpd-perl \.png    #in htaccess
+edoced_46esab                             #generic dangerous functions
+passthru\s*\(                             #generic dangerous functions
+shell_exec\s*\(                           #generic dangerous functions
+document\.write\s*\(unescape\s*\(         #generic dangerous functions
+(eval\s*\(.{0,40})?base64_decode\s*\(     #generic dangerous functions
+\bsystem\s*\(                             #generic dangerous functions
+`[^`]+`                                   #generic dangerous functions
+hacked by\s                               #generic dangerous functions
+web[\s-]*shell                            #generic dangerous functions
+[a-zA-Z0-9]{50,}={0,2}                    #too long string
+\bc(99|100)[^0-9]                         #shell name
+Safe0ver                                  #webshell name
+r57                                       #webshell name
 \$shver
 kira
 gumblar\.cn
@@ -23,8 +23,10 @@ gooqle
 _analist
 anaiytics
 \$scriptver\b
-passwd #don't search for my passwd file
+passwd                                    #don't search for my passwd file
+chmod                                     #leave my octals alone
 spygrup
-\bt[1-8] #Ekin0x shell
-\bop(?:[1-9]|1[1-3])\b #Ekin0x shell
+\bt[1-8]                                  #Ekin0x shell
+\bop(?:[1-9]|1[1-3])\b                    #Ekin0x shell
 header\('Content-Type: image/gif'\)
+wso                                       #WSO websehll
