@@ -2,3 +2,4 @@ vendor/phamlp
 \.git
 \.svn
 \.bundle
+rdiff-backup-data #if you use rdiff-backup you want to skip this dir
