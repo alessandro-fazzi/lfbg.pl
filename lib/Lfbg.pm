@@ -62,7 +62,7 @@ sub search_and_scan{
 
 sub match{
 
-  $File::Find::name =~ m/$excludelist/ and return;
+  $File::Find::name =~ /$excludelist/ and return;
   -f and /$includelist/ and
       $output = "$File::Find::dir/<strong>$_</strong>\t matched $&" and
       collect($output);
@@ -70,7 +70,7 @@ sub match{
 
 sub match_content{
   
-  $File::Find::name =~ m/$excludelist/ and return;
+  $File::Find::name =~ /$excludelist/ and return;
   -f and /$includelist/ or return;
 
   open (FH, $_);
