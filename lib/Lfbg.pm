@@ -16,8 +16,8 @@ sub get_list {
   @fh = <FH>;
   chomp @fh;
   local $"="|";
-  my $include = qr/@fh/ix;
-  return $include;
+  my $list = qr/@fh/ix;
+  return $list;
 }
 
 sub get_paths {
