@@ -14,7 +14,6 @@ do "$abs_path/lfbg.conf"; #include user configurations
 sub get_list {
   open FH, $_[0] or die $!;
   @fh = <FH>;
-  chomp @fh;
   local $"="|";
   my $list = qr/@fh/ix;
   return $list;
@@ -22,6 +21,7 @@ sub get_list {
 
 sub get_paths {
 
+  # $scanpath is set in lfbg.conf by the user
   $scanpath =~ s/ +/,/; #if user separated paths with spaces convert to commas
   my @pathlist = split(/,/, $scanpath); #get a list of paths
   my @globbedpaths = map { glob($_) } @pathlist; #if globbing star used, expand it
@@ -69,7 +69,6 @@ sub match{
 }
 
 sub match_content{
-  
   $File::Find::name =~ /$excludelist/ and return;
   -f and /$includelist/ or return;
 
