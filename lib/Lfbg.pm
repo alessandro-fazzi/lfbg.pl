@@ -14,7 +14,7 @@ do "$abs_path/lfbg.conf"; #include user configurations
 sub get_list {
   open FH, $_[0] or die $!;
   @fh = <FH>;
-  local $"="|";
+  local $"="|\n";
   my $list = qr/@fh/ix;
   return $list;
 }
