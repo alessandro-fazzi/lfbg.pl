@@ -1,8 +1,7 @@
 root #Our regexes supports inline comments
-kit
 c(99|100)
 r57
 gifimg
 webacoo
-s\.html
+^s\.html
 shell(?:\.php)?
