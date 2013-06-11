@@ -28,6 +28,5 @@ spygrup
 \$_REQUEST\['ustools'\]                   #Ekin0x shell
 \bop(?:[1-9]|1[1-3])\b                    #Ekin0x shell
 header\('Content-Type: image/gif'\)
-wso                                       #WSO websehll
 expl0rer                                  #text found in a webshell
 function_exists\('(?:ini_alter|set_time_limit|ini_set|posix_uname|posix_getpwuid)'\)
