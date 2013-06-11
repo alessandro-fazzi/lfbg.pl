@@ -3,3 +3,4 @@ models/*
 !models/filenames
 !models/malicious-snippets
 !models/template
+!models/timthumb
