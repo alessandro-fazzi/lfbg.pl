@@ -41,6 +41,6 @@ for (@ARGV){
 for my $model (@accepted_args){
   print "Processing $model";
   my @output = Lfbg::process($model, $verbose);
-  Lfbg::mailout($model, @output) if $mail;
+  Lfbg::mailout($model, @output) if ( $mail and @output );
 }
 
