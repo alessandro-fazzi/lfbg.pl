@@ -5,4 +5,4 @@ vendor/phamlp
 rdiff-backup-data                               #if you use rdiff-backup you want to skip this dir
 PSpellShell\.php$                               #this is a fucking tiny-mce file
 wp-includes/Text/Diff/Engine/shell\.php$
-wordless/tests/simpletest/shell_tester\.php$
+wordless(:\w)*/tests/simpletest/shell_tester\.php$
