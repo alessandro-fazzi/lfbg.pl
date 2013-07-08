@@ -9,7 +9,6 @@ eval\s*\(.{0,40}base64_decode\s*\(        #generic dangerous functions
 \bsystem\s*\(                             #generic dangerous functions
 hacked by\s                               #generic dangerous functions
 web[\s-]*shell                            #generic dangerous functions
-\w{100,}={0,2}                            #too long string
 \bc(99|100)\b[^']                         #shell name (with wordpress false positive trick)
 Safe0ver                                  #webshell name
 (?<!isoi)r57                              #webshell name (with wordpress false positive trick)
