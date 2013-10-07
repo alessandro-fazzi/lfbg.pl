@@ -2,26 +2,29 @@
 
 ## The CLI version
 
-Stay away! This is earlier than alpha software!
+Warning! This is beta software!
+We use it in production every day, but keep calm and test it on your
+system with caution.
 
 ## Scope
 
 This little script's scope is to act as regex collection in order to do
 code scanning about maliciuos code and files.
-The are two search models:
+The are 3 search models:
 
 * filenames
-* snippets
+* malicious-snippets
+* executables
 
 The former will search for filenames based on regexes listed in _include.list_,
 excluding those matching regexes in _exclude.list_. The latter will search for
-files matching the _include.list_ regexes, than scan the code for patterns 
+files matching the _include.list_ regexes, than scan the code for patterns
 matching the _regex.list_.
 
 ## Why?
 
 All began thanks to the idea born from [25yearsofprogramming](http://25yearsofprogramming.com/php/findmaliciouscode.htm).
-In @welaika we have a lot of hosted sites, hosted on massive hosting services, 
+In @welaika we have a lot of hosted sites, hosted on massive hosting services,
 with intrinsic security holes. We had some attacks, the most were web-shells
 injections or defacements; so we was in need of a passive security scan to monitor
 our site's code, just like lfbg from 25yearsofprogramming.
@@ -78,7 +81,23 @@ Files, folders and what they do...
     │   │   ├── exclude.list
     │   │   ├── include.list
     │   │   └── regex.list
+    │   ├── executables         # list executable files
+    │   │   ├── exclude.list
+    │   │   ├── include.list
+    │   │   └── regex.list
     └── README.md               # your looking at this now, actually :)
+
+### Perl CPAN dependencies
+
+lfbg.pl relies on some perl modules; the better way to install them is using `cpanm`
+
+    $ cpan cpanm
+
+so you can easily install all requirements
+
+    $ cpanm Moose FindBin File::Find Data::Dumper POSIX Net::SMTP_auth HTML::Entities HTML::Strip File::stat
+
+Shout if something missing.
 
 ### Usage
 
@@ -87,6 +106,15 @@ ToDo... for now:
     -v, -verbose    print results on STDOUT
     -m, -mail       send mail report (if configured in lfbg.conf)
     -list           list available methods
+
+### The "executables" exeption
+
+The model named "executables" isn't based on a regex library. You can see that `regex.list`
+is actually empty. The model will list all the files (directories escluded _a priori_)
+with executable bit set. You can filter files to check using `include.list` and `exclude.list`.
+
+This is useful due to many hack patterns leaving php scripts or images executable, when they
+normaly aren't.
 
 ## Status and features (sort of changelog)
 
