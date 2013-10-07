@@ -2,7 +2,7 @@ package FilePermissions;
 
 use Moose;
 use Data::Dumper;
-use File::chmod;
+use File::stat;
 
 has 'filename' => (
 	is => 'rw',
@@ -10,42 +10,46 @@ has 'filename' => (
 	predicate => 'has_filename'
 );
 
-has 'octals' => (
+has 'mode' => (
 	is => 'rw',
-	isa => 'Str'
+	isa => 'Item'
+	);
+
+has 'octal' => (
+	is => 'rw'
 	);
 
 has 'executable' => (
 	is => 'rw',
 	isa => 'Bool',
-	predicate => 'is_executable'
 );
 
 sub BUILD {
 	my $self = shift;
 
-	$self->set_octals;
-	$self->set_executable;
+	$self->set_mode;
+	$self->set_octal;
+	$self->check_if_executable;
 }
 
-sub set_octals {
+sub set_mode {
 	my $self = shift;
-	my $mode = (stat($self->filename))[2];
+	my $info = stat($self->filename);
+	my $mode = $info->mode;
 
-	my $octals = sprintf ("%04o", $mode & 07777);
-
-	$self->octals($octals);
+	$self->mode($mode);
 }
 
-sub set_executable {
+sub set_octal {
 	my $self = shift;
+	my $octal = sprintf "%o",$self->mode;
 
-	my $octal = substr($self->octals, 3, 1);
-	my @exec = ("1", "5", "7");
+	$self->octal($octal);
+}
 
-	my @ret = grep ( /$octal/, @exec );
-
-	@ret and
+sub check_if_executable {
+	my $self = shift;
+	( $self->mode & 0111 ) and
 		$self->executable(1) or
 			$self->executable(0);
 }

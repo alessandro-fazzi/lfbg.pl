@@ -70,7 +70,7 @@ sub is_exec{
   -f and /$includelist/ or return;
   my $file = FilePermissions->new( filename => $File::Find::name );
   if ( $file->executable ) {
-    $output = "$File::Find::dir/<strong>$_</strong>\t has permissions " . $file->octals and
+    $output = "$File::Find::dir/<strong>$_</strong>\t has permissions " . $file->octal and
     collect($output);
   }
 }
