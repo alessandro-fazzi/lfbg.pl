@@ -4,3 +4,4 @@ models/*
 !models/malicious-snippets
 !models/template
 !models/timthumb
+!models/executables
