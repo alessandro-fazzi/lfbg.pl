@@ -39,9 +39,10 @@ sub process {
 
   {
   my @scanpath = get_paths;
-  if ($model eq 'filenames') { Lfbg::search(@scanpath); }
-  elsif ($model eq 'malicious-snippets') { Lfbg::search_and_scan(@scanpath); }
-  elsif ($model eq 'wp-pharma-hack') { Lfbg::search_and_scan(@scanpath); }
+  if ( $model eq 'filenames' ) { Lfbg::search(@scanpath); }
+  elsif ( $model eq 'malicious-snippets' ) { Lfbg::search_and_scan(@scanpath); }
+  elsif ( $model eq 'wp-pharma-hack' ) { Lfbg::search_and_scan(@scanpath); }
+  elsif ( $model eq 'executables' ) { Lfbg::search_for_exec(@scanpath) }
   else { Lfbg::search_and_scan(@scanpath); }
 
   print @output." matches found for --> $model <-- search model.";
@@ -54,14 +55,27 @@ sub search {
   my @scanpath = @_;
   find({ wanted => \&match, preprocess => \&mysort }, @scanpath);
 }
-
 sub search_and_scan{
   my @scanpath = @_;
   find({ wanted => \&match_content, preprocess => \&mysort }, @scanpath);
 }
 
-sub match{
+sub search_for_exec {
+  my @scanpath = @_;
+  find({ wanted => \&is_exec, preprocess => \&mysort }, @scanpath);
+}
 
+sub is_exec{
+  $File::Find::name =~ /$excludelist/ and return;
+  -f and /$includelist/ or return;
+  my $file = FilePermissions->new( filename => $File::Find::name );
+  if ( $file->executable ) {
+    $output = "$File::Find::dir/<strong>$_</strong>\t has permissions " . $file->octals and
+    collect($output);
+  }
+}
+
+sub match{
   $File::Find::name =~ /$excludelist/ and return;
   -f and /$includelist/ and
       $output = "$File::Find::dir/<strong>$_</strong>\t matched $&" and
@@ -79,10 +93,10 @@ sub match_content{
   my $linenu = 0;
   for my $line (@lines){
     ++$linenu;
-    
+
     $line =~ s/^\s+//;
     $line =~ /$regexlist/ or next;
-    
+
     my $hs = HTML::Strip->new();
     my $clean_line = $hs->parse( $line );
     $hs->eof;
@@ -92,7 +106,7 @@ sub match_content{
     push @local_output, "\t<span class=\"singlematch\"><blockquote>On line $linenu ->" . $clean_match . "</span><br />\n\t\t
     <blockquote><pre>".$clean_line."</pre></blockquote></blockquote>";
   }
-  
+
   $output = "Searching in file <strong>$File::Find::name</strong>... ".@local_output." matches:\n<br />
   <div class=\"grey\">@local_output</div>" and
   collect($output) unless @local_output eq 0;
