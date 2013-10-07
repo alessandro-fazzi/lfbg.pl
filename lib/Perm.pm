@@ -7,7 +7,6 @@ use File::stat;
 has 'filename' => (
 	is => 'rw',
 	required => 1,
-	predicate => 'has_filename'
 );
 
 has 'mode' => (
