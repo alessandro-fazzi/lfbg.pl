@@ -1,4 +1,5 @@
 lfbg.conf
+deploy.sh
 models/*
 !models/filenames
 !models/malicious-snippets
