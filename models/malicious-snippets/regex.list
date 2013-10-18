@@ -29,3 +29,4 @@ spygrup
 header\('Content-Type: image/gif'\)
 expl0rer                                  #text found in a webshell
 function_exists\('(?:ini_alter|set_time_limit|ini_set|posix_uname|posix_getpwuid)'\)
+wp_doorgen_
