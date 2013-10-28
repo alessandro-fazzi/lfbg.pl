@@ -5,9 +5,9 @@ gifimg
 webacoo
 ^s\.html
 shell(?:\.php)?
-last
-nwq
-old
-error
-source
+\blast\b
+\bnew\b
+\bold\b
+\berror\b
+\bsource\b
 \s
