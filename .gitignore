@@ -6,3 +6,4 @@ models/*
 !models/template
 !models/timthumb
 !models/executables
+deploy.sh
