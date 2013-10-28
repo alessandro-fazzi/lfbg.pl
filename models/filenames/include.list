@@ -6,7 +6,7 @@ webacoo
 ^s\.html
 shell(?:\.php)?
 \blast\b
-\bnew\b
+(?<!post-)(?<!media-)(?<!user-)\bnew\b
 \bold\b
 \berror\b
 \bsource\b
