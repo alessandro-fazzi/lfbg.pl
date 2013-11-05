@@ -6,3 +6,6 @@ rdiff-backup-data                               #if you use rdiff-backup you wan
 PSpellShell\.php$                               #this is a fucking tiny-mce file
 wp-includes/Text/Diff/Engine/shell\.php$
 wordless(?:\w)*/tests/simpletest/(?:test/)?shell_(?:tester_)?test(?:er)?\.php$
+wp-includes/class-wp-error\.php$
+network/site-new\.php$
+wp-includes/SimplePie/Source\.php$
