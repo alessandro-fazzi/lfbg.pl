@@ -4,9 +4,9 @@ r57
 gifimg
 webacoo
 ^s\.html
-shell(?:\.php)?
-\blast\b
+shell.*\.php$
 (?<!post-)(?<!media-)(?<!user-)\bnew\b.*\.php$
+\blast\b.*\.php$
 \bold\b.*\.php$
 \berror\b.*\.php$
 \bsource\b.*\.php$
