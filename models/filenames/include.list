@@ -8,7 +8,7 @@ shell(?:\.php)?
 \blast\b
 (?<!post-)(?<!media-)(?<!user-)\bnew\b
 \bold\b.*\.php$
-\berror\b
-\bsource\b
+\berror\b.*\.php$
+\bsource\b.*\.php$
 \s(?:.*\.php$)
 \.py$
