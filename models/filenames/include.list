@@ -1,5 +1,5 @@
 root #Our regexes supports inline comments
-c(99|100)
+c(99|100).*\.php$
 r57
 gifimg
 webacoo
