@@ -12,3 +12,4 @@ shell.*\.php$
 \bsource\b.*\.php$
 \s(?:.*\.php$)
 \.py$
+^\.?[^\.]+$																				#if it hasn't a dot so it hasn't an exension and so I don't like it
