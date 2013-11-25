@@ -9,3 +9,17 @@ wordless(?:\w)*/tests/simpletest/(?:test/)?shell_(?:tester_)?test(?:er)?\.php$
 wp-includes/class-wp-error\.php$
 network/site-new\.php$
 wp-includes/SimplePie/Source\.php$
+wpdm-add-new-file\.php$													#really a file: download-manager plugin
+source-radio\.tpl\.php$													#really a file: tubepress plugin
+ShellCommandFailureException\.php 							#really a file: tubepress plugin
+tubepress.*/shell.*\.php$												#really a file: tubepress plugin
+buddypress.*/user-add-new\.php$									#really a file: buddypress plugin
+buddypress.*/class\.wp-error\.php$							#really a file: buddypress plugin
+formidable.*/new\.php$													#really a file: formidable plugin
+formidable.*/new-field-js\.php$									#really a file: formidable plugin
+formidable.*/new-option-js\.php$								#really a file: formidable plugin
+formidable.*/new-selection\.php$								#really a file: formidable plugin
+formidable.*/sidebar-new\.php$									#really a file: formidable plugin
+newsletter.*/new\.php
+newsletter.*/index-old\.php
+newsletter.*/new\.php
