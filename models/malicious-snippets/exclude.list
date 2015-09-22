@@ -10,3 +10,5 @@ tests/simpletest
 class-(?:snoopy|smtp|feed|pop3|IXR|phpmailer|json|simplepie|phpass|http|oembed|ftp-pure|wp-filesystem-ssh2|wp-filesystem-ftpsockets|ftp|wp-filesystem-ftpext|pclzip|wp-importer|wp-upgrader|wp-filesystem-base|ftp-sockets|wp-filesystem-direct)\.php #exclude all this wordpress' files: they are full of bad functions, but this is normal
 wp-includes/Text/Diff/Engine/shell.php
 iwp-client/backup\.class\.php$        # backup functions need system() call
+iwp-client/backup\.class\.multicall\.php$        # backup functions need system() call
+iwp-client/backup\.class\.singlecall\.php$        # backup functions need system() call
