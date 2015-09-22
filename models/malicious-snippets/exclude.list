@@ -14,3 +14,7 @@ iwp-client/backup\.class\.multicall\.php$        # backup functions need system(
 iwp-client/backup\.class\.singlecall\.php$        # backup functions need system() call
 FrmProMathHelper\.php
 wp-syntax/geshi/geshi/.*?\.php
+post-new.php$
+site-new.php$
+media-new.php$
+class\.jetpack-error\.php$
