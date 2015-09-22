@@ -4,9 +4,7 @@ AddType application/x-httpd-perl \.png    #in htaccess
 edoced_46esab                             #generic dangerous functions
 passthru\s*\(                             #generic dangerous functions
 shell_exec\s*\(                           #generic dangerous functions
-document\.write\s*\(unescape\s*\(         #generic dangerous functions
 eval\s*\(.{0,40}base64_decode\s*\(        #generic dangerous functions
-\bsystem\s*\(                             #generic dangerous functions
 hacked by\s                               #generic dangerous functions
 web[\s-]*shell                            #generic dangerous functions
 \bc(99|100)\b[^']                         #shell name (with wordpress false positive trick)
