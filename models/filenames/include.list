@@ -10,3 +10,4 @@ shell.*\.php$
 \bsource\b.*\.php$
 \s(?:.*\.php$)
 \.py$
+\.backup_time$
