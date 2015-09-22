@@ -2,7 +2,8 @@ vendor/phamlp
 \.git
 \.svn
 rdiff-backup-data                   #if you use rdiff-backup you want to skip this dir
-wordless/vendor/mobile_detect\.php
+mobile_detect\.php
+mobile-detect\.php
 PSpellShell\.php                    #tiny-mce component with a fucking name
 geobeni
 tests/simpletest
