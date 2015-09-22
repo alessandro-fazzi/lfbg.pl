@@ -13,3 +13,4 @@ iwp-client/backup\.class\.php$        # backup functions need system() call
 iwp-client/backup\.class\.multicall\.php$        # backup functions need system() call
 iwp-client/backup\.class\.singlecall\.php$        # backup functions need system() call
 FrmProMathHelper\.php
+wp-syntax/geshi/geshi/.*?\.php
