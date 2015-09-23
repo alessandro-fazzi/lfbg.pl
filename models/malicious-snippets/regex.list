@@ -29,4 +29,5 @@ expl0rer                                  #text found in a webshell
 function_exists\('(?:ini_alter|set_time_limit|ini_set|posix_uname|posix_getpwuid)'\)
 wp_doorgen_
 RewriteCond %{HTTP_REFERER}
-[a-z0-9]{50,}==                            #traces of what I call .backup_time attack
+[a-z0-9]{50,}==                           #traces of what I call .backup_time attack
+\bebgebg\b                                #ebgebg obfuscated code. Seems to be a webshell or similar
