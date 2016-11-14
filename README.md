@@ -91,7 +91,7 @@ Files, folders and what they do...
 
 lfbg.pl relies on some perl modules; the better way to install them is using `cpanm`
 
-    $ cpan cpanm
+    $ curl -L https://cpanmin.us | perl - --sudo App::cpanminus
 
 so you can easily install all requirements
 
