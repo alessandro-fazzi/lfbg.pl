@@ -101,11 +101,27 @@ Shout if something missing.
 
 ### Usage
 
-ToDo... for now:
+Create the config file
+
+    cp lfbg.conf.sample lfbg.conf
+
+and fill at least the `scanpath` option with the path of your interest
+
+    $scanpath='/Users/fuzzy/dev/thesitetobescanned';
+
+Supported flags are
 
     -v, -verbose    print results on STDOUT
     -m, -mail       send mail report (if configured in lfbg.conf)
     -list           list available methods
+
+So take a look to installed scan methods
+
+    ./lfbg.pl -list
+
+and you can run the command invoking at least one method, e.g.:
+
+    ./lfgb.pl -v malicious-snippets
 
 ### The "executables" exeption
 
