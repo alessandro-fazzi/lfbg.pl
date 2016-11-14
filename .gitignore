@@ -7,3 +7,4 @@ models/*
 !models/timthumb
 !models/executables
 deploy.sh
+lfbg.conf
