@@ -1,7 +1,8 @@
 #!/usr/bin/perl -wl -s
 use FindBin qw($Bin);
-use lib::Lfbg;
-use lib::Perm;
+use lib qw(./lib)
+use Lfbg;
+use Perm;
 use Data::Dumper;
 
 
@@ -44,4 +45,3 @@ for my $model (@accepted_args){
   my @output = Lfbg::process($model, $verbose);
   Lfbg::mailout($model, @output) if ( $mail and @output );
 }
-
